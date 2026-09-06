@@ -1,7 +1,7 @@
 import request from 'supertest';
 import { expect } from 'chai';
 import { getToken } from '../helpers/auth.js';
-
+import { fakerPT_BR as faker } from '@faker-js/faker';
 
 describe('Login', () => {
     let token;
@@ -11,35 +11,24 @@ describe('Login', () => {
     });
 
     it('deve cadastrar um aluno quando ele informa dados válidos', async () => {
-        // Obter o token
-        const loginResposta = await request('http://localhost:3000')
-            .post('/api/auth/login')
-            .set('Content-Type', 'application/json')
-            .send({
-                email: 'admin@escola.com',
-                senha: 'admin123'
-            });
+        const novoAluno = {
+            nome: faker.person.fullName(),
+            email: faker.internet.email().toLowerCase(),
+            matricula: faker.string.numeric(8),
+            senha: '123456'
+        };
 
-        const token = loginResposta.body.token;
-
-        // Cadastrar o aluno
         const cadastroAlunoResposta = await request('http://localhost:3000')
             .post('/api/admin/alunos')
             .set('Content-Type', 'application/json')
             .set('Authorization', `Bearer ${token}`)
-            .send({
-                nome: 'Wedney Silva',
-                email: 'wedney.silva@example.com',
-                matricula: '2026-0003',
-                senha: '123456'
-            });
+            .send(novoAluno);
 
-        // Validar que ele foi cadastrado
         expect(cadastroAlunoResposta.status).to.equal(201);
-        expect(cadastroAlunoResposta.body.nome).to.equal('Wedney Silva');
-        expect(cadastroAlunoResposta.body.email).to.equal('wedney.silva@example.com');
-        expect(cadastroAlunoResposta.body.matricula).to.equal('2026-0003');
-
+        expect(cadastroAlunoResposta.body.nome).to.equal(novoAluno.nome);
+        expect(cadastroAlunoResposta.body.email).to.equal(novoAluno.email);
+        expect(cadastroAlunoResposta.body.matricula).to.equal(novoAluno.matricula);
+        expect(cadastroAlunoResposta.body).to.not.have.property('senha');
     });
 
     it('deve negar o cadastro de um aluno quando ele já existe', async () => {
