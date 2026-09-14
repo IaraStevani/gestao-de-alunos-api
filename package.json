@@ -7,7 +7,8 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "test": "mocha test/**/*.test.js"
+    "test": "mocha test/**/*.test.js",
+    "test:report": "mocha \"test/**/*.test.js\" --reporter mochawesome --reporter-options reportDir=mochawesome-report,reportFilename=index,html=true,json=true,overwrite=true,timestamp=false"
   },
   "author": "",
   "license": "ISC",
@@ -27,6 +28,7 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^10.6.0",
+    "mochawesome": "^8.1.0",
     "nodemon": "^3.1.4"
   }
 }

@@ -23,10 +23,20 @@ export async function getToken(emailUser, passUser) {
     const loginResposta = await request('http://localhost:3000')
         .post('/api/auth/login')
         .set('Content-Type', 'application/json')
-        .send({ 
-            email: emailUser, 
+        .send({
+            email: emailUser,
             senha: passUser
         });
 
     return loginResposta.body.token;
+}
+
+export async function loginComoAluno(email, senha) {
+    return api()
+        .post('/api/auth/login')
+        .set('Content-Type', 'application/json')
+        .send({
+            email,
+            senha
+        });
 }

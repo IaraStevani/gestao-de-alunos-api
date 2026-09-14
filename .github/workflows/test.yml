@@ -46,5 +46,21 @@ jobs:
           cat server.log
           exit 1
 
-      - name: Executar testes
-        run: npm test
+      - name: Executar testes com relatorio
+        run: npm run test:report
+
+      - name: Publicar relatorio Mochawesome
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mochawesome-report
+          path: mochawesome-report/
+          if-no-files-found: ignore
+
+      - name: Publicar log da API
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: server-log
+          path: server.log
+          if-no-files-found: ignore

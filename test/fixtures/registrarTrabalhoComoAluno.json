@@ -1,0 +1,27 @@
+[
+    {
+        "testTitleCadastroAluno": "Validar que é possivel registrar entrega de trabalho como aluno",
+        "testTitleRegistrarTrabalho": "deve logar como aluno e registrar a entrega de um trabalho como aluno",
+        "dadosAluno": {
+            "nomePrefixo": "Aluno Trabalho",
+            "emailPrefixo": "aluno.trabalho",
+            "matriculaPrefixo": "TRAB",
+            "senha": "123456"
+        },
+        "dadosDisciplina": {
+            "nome": "Disciplina para Trabalho como Aluno",
+            "codigoPrefixo": "TRAB",
+            "cargaHoraria": 60
+        },
+        "dadosTrabalho": {
+            "titulo": "Entrega de Trabalho como Aluno",
+            "descricao": "Entrega de trabalho realizada pelo aluno."
+        },
+        "statusCodeEsperadoCadastroAluno": 201,
+        "statusCodeEsperadoCadastroDisciplina": 201,
+        "statusCodeEsperadoCadastroMatricula": 201,
+        "statusCodeEsperadoLogin": 200,
+        "statusCodeEsperadoCadastroTrabalho": 201,
+        "statusEsperadoTrabalho": "entregue"
+    }
+]
