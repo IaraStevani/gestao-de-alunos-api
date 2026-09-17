@@ -1,20 +1,44 @@
 [
     {
-        "testTitle": "deve cadastrar e logar como aluno para registrar a entrega de um trabalho",
+        "testTitle": "deve registrar a entrega de um trabalho de programação",
         "dadosAluno": {
-            "nomePrefixo": "Aluno Trabalho",
-            "emailPrefixo": "aluno.trabalho",
-            "matriculaPrefixo": "TRAB",
+            "nomePrefixo": "Aluno Programação",
+            "emailPrefixo": "aluno.programacao",
+            "matriculaPrefixo": "PROG",
             "senha": "123456"
         },
         "dadosDisciplina": {
-            "nome": "Disciplina para Trabalho como Aluno",
-            "codigoPrefixo": "TRAB",
+            "nome": "Programação Web",
+            "codigoPrefixo": "WEB",
             "cargaHoraria": 60
         },
         "dadosTrabalho": {
-            "titulo": "Entrega de Trabalho como Aluno",
-            "descricao": "Entrega de trabalho realizada pelo aluno."
+            "titulo": "Projeto de API REST",
+            "descricao": "Implementação de uma API utilizando Node.js."
+        },
+        "statusCodeEsperadoCadastroAluno": 201,
+        "statusCodeEsperadoCadastroDisciplina": 201,
+        "statusCodeEsperadoCadastroMatricula": 201,
+        "statusCodeEsperadoLogin": 200,
+        "statusCodeEsperadoCadastroTrabalho": 201,
+        "statusEsperadoTrabalho": "entregue"
+    },
+    {
+        "testTitle": "deve cadastrar e logar como aluno para registrar um trabalho de banco de dados",
+        "dadosAluno": {
+            "nomePrefixo": "Aluno Banco",
+            "emailPrefixo": "aluno.banco",
+            "matriculaPrefixo": "BD",
+            "senha": "654321"
+        },
+        "dadosDisciplina": {
+            "nome": "Banco de Dados",
+            "codigoPrefixo": "BD",
+            "cargaHoraria": 80
+        },
+        "dadosTrabalho": {
+            "titulo": "Modelagem de Banco de Dados",
+            "descricao": "Construção do modelo relacional de uma aplicação."
         },
         "statusCodeEsperadoCadastroAluno": 201,
         "statusCodeEsperadoCadastroDisciplina": 201,
