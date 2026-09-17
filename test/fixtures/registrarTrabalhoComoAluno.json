@@ -1,7 +1,6 @@
 [
     {
-        "testTitleCadastroAluno": "Validar que é possivel registrar entrega de trabalho como aluno",
-        "testTitleRegistrarTrabalho": "deve logar como aluno e registrar a entrega de um trabalho como aluno",
+        "testTitle": "deve cadastrar e logar como aluno para registrar a entrega de um trabalho",
         "dadosAluno": {
             "nomePrefixo": "Aluno Trabalho",
             "emailPrefixo": "aluno.trabalho",

@@ -20,12 +20,9 @@ describe('Registrar Entrega de Trabalho como Aluno', () => {
             cargaHoraria: testeDeTrabalho.dadosDisciplina.cargaHoraria
         };
 
-        let alunoId;
-        let disciplinaId;
-
-        it(testeDeTrabalho.testTitleCadastroAluno, async () => {            
+        it(testeDeTrabalho.testTitle, async () => {
             const dadosAluno = aluno;
-           
+
             const cadastroAlunoResposta = await api()
                 .post('/api/admin/alunos')
                 .set('Content-Type', 'application/json')
@@ -39,10 +36,8 @@ describe('Registrar Entrega de Trabalho como Aluno', () => {
             expect(cadastroAlunoResposta.body.matricula).to.equal(dadosAluno.matricula);
             expect(cadastroAlunoResposta.body).to.not.have.property('senha');
 
-            alunoId = cadastroAlunoResposta.body.id;
-        });
+            const alunoId = cadastroAlunoResposta.body.id;
 
-        it(testeDeTrabalho.testTitleRegistrarTrabalho, async () => {           
             const cadastroDisciplinaResposta = await api()
                 .post('/api/admin/disciplinas')
                 .set('Content-Type', 'application/json')
@@ -50,7 +45,7 @@ describe('Registrar Entrega de Trabalho como Aluno', () => {
                 .send(disciplina);
 
             expect(cadastroDisciplinaResposta.status).to.equal(testeDeTrabalho.statusCodeEsperadoCadastroDisciplina);
-            disciplinaId = cadastroDisciplinaResposta.body.id;
+            const disciplinaId = cadastroDisciplinaResposta.body.id;
 
             const cadastroMatriculaResposta = await api()
                 .post(`/api/admin/disciplinas/${disciplinaId}/matriculas`)
